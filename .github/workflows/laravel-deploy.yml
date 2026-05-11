@@ -39,10 +39,13 @@ jobs:
   deploy-social-media:
     needs: build-push-image
     runs-on: self-hosted
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: stop and remove existing container
-         run: sudo docker compose down
-      - name: start container
-         run: docker compose up -d
+
+      - name: Stop existing container
+        run: sudo docker compose down
+
+      - name: Start container
+        run: sudo docker compose up -d
